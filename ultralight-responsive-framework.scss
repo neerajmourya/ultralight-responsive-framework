@@ -1,0 +1,516 @@
+/*
+ * Ultralight Responsive Framework V1.0 - Light weight Responsive css framework for UI/UX Designing.
+ * Copyright (C) 2017 Neeraj Mourya
+ * Licensed under the GPL V3 or Later, License (https://www.gnu.org/licenses/gpl-3.0.en.html)
+ */
+ 
+// Define columns, gutter and container width
+$columns:12;
+$gutter:0.5rem;
+$containerWidth:62.5em;
+
+//Define Screens with name, min-width, max-width
+$smallScreen:s,0,39.9375;
+$mediumScreen:m,40,63.9375;
+$largeScreen:l,64,74.9375;
+$xLargeScreen:xl,75,89.9375;
+$xxLargeScreen:xxl,90,119.9375;
+$xxxLargeScreen:xxxl,120,256;
+
+$highlightcolor:#66ccff;
+
+//Add screens to the list
+$screens: $smallScreen, $mediumScreen, $largeScreen, $xLargeScreen, $xxLargeScreen, $xxxLargeScreen;
+
+body {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+.lft{
+    float:left;
+}
+.rht{
+    float:right;
+}
+.cntr{
+    width: $containerWidth;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.rw::before, .rw::after, .clrbox::before, .clrbox::after {
+    content: " ";
+    display: table;
+}
+.rw::after, .clrbox::after {
+    clear: both;
+}
+.rw.tbl{
+	display:table;
+	width:100%;
+}
+.cl {
+    float: left;
+    width:100%;
+    padding: 0 $gutter;
+}
+.rw.out{
+    width:auto;
+    margin-left: -$gutter;
+    margin-right: -$gutter;    
+}
+.rw.ngt>.cl {
+    padding: 0;
+}
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+}
+
+// Navigation or Menu Styles
+ul.menu, ul.menu *{    
+    display: block;
+    margin:0px;
+    padding: 0px;
+}
+ul.menu::before, ul.menu::after{
+  content: " ";
+  display: table; }
+
+ul.menu::after{
+  clear: both; }
+  
+ul.menu, ul.menu li{
+	position:relative;
+}
+ul.menu li{
+    margin:0px;
+    list-style: none;
+}
+ul.menu li a{
+    padding: 0.3rem 0.5rem;
+    text-decoration: none;
+}
+ul.menu ul{
+    position: absolute;
+    display: none;
+    top: 0;
+    left:100%;
+    width:100%;
+    min-width: 180px;
+    z-index: 100;
+    background-color:#fff;
+    border:1px solid #ddd;
+}
+ul.menu.hover li:hover>ul{
+    display: block;
+}
+
+/*********Horizontal*********/
+ul.menu.hrtl li{
+    float:left;
+}
+ul.menu.hrtl li li{
+    float:none;
+}
+ul.menu.hrtl ul{
+    top:100%;
+    left:0;
+}
+ul.menu.hrtl ul ul{
+    top:0;
+    left:100%;
+}
+/*********Accordian*********/
+ul.menu.acdn ul{
+    position: relative;
+    left:0;
+}
+
+// placeholder to be extended by shw for all screens
+%hidshw {
+    display:none;
+}
+// display none for all shw initially for all screens
+@for $i from 1 through length($screens) {
+    $screen: nth($screens, $i);
+    $name: nth($screen, 1); 
+    .#{$name}shw{
+        @extend %hidshw; // extending placeholder %hidshw
+    }
+}
+
+// mixin to define styles for a screen
+@mixin screenStyles($screen){
+    $name: nth($screen, 1);
+    
+    @if $name!=(nth((nth($screens, 1)), 1)){
+		// display block column for screen
+		.#{$name}cl{
+			display:block;
+			float: left;
+			width:100%;
+		} 
+		//display table-cell for screen
+		.#{$name}tcl{
+			float:none;
+			display:table-cell;
+			width:auto;
+		}
+	}
+	
+    // exp, hid, shw classes for each screen
+    .#{$name}exp, .#{$name}exp>*{
+		width:100%;
+	}
+	.#{$name}hid{
+		display:none;
+	}
+	.#{$name}shw{
+		display:block;
+	}
+	
+    // columns styles by looping through the number of columns
+    @for $col from 1 through $columns{
+    	// Calculate the width of the column
+        $width:($col * 100% / $columns);
+        .#{$name}#{$col}{
+            width: $width;
+        }
+        
+        // pus, pul, off classes for each columns except last column
+        @if $col!=$columns{
+            .#{$name}pus#{$col}{
+		        left:$width;
+	        }
+	        .#{$name}pul#{$col}{
+		        left:-$width;
+	        }
+	        .#{$name}off#{$col}{
+		        margin-left:$width;
+	        }
+        }
+    }
+    
+    // Navigation or Menu Styles
+    ul.menu.#{$name}vrtl li{
+		float:none;
+	}
+	ul.menu.#{$name}vrtl ul{
+		position:absolute;
+		top:0;
+		left:100%;
+	}
+	ul.menu.#{$name}hrtl li{
+		float:left;
+	}
+	ul.menu.#{$name}hrtl li li{
+		float:none;
+	}
+	ul.menu.#{$name}hrtl ul{
+		position:absolute;
+		top:100%;
+		left:0;
+	}
+	ul.menu.#{$name}hrtl ul ul{
+		top:0;
+		left:100%;
+	}
+	ul.menu.#{$name}acdn ul, ul.menu.#{$name}acdn ul ul{
+		position: relative;
+		left:0;
+	}
+}
+
+// call mixin screenStyles to define styles for first screen
+@include screenStyles(nth($screens, 1));
+// call mixin screenStyles to define styles for screens from 2nd to last
+@for $i from 2 through length($screens) {
+    $screen: nth($screens, $i); 
+    $minWidth: nth($screen, 2);
+    @media screen and (min-width:#{$minWidth}em){
+        @include screenStyles($screen);  
+    }
+}
+
+// placeholder to be extended by onlyhid classes for all screens
+%shwonlyhid {
+    display:block;
+}
+// display block for all onlyhid initially for all screens
+@for $i from 1 through length($screens) {
+    $screen: nth($screens, $i);
+    $name: nth($screen, 1); 
+    .#{$name}onlyhid{
+        @extend %shwonlyhid; // extending placeholder %shwonlyhid
+    }
+}
+
+// placeholder to be extended by onlyshw classes for all screens
+%hidonlyshw {
+    display:none;
+}
+// display none for all onlyshw initially for all screens
+@for $i from 1 through length($screens) {
+    $screen: nth($screens, $i);
+    $name: nth($screen, 1); 
+    .#{$name}onlyshw{
+        @extend %hidonlyshw; // extending placeholder %hidonlyshw
+    }
+}
+
+// onlyhid, onlyshw classes for each screen
+@for $i from 1 through length($screens) {
+    $screen: nth($screens, $i);
+    $minWidth: nth($screen, 2);
+    $maxWidth: nth($screen, 3);
+    $name: nth($screen, 1); 
+    @media screen and (min-width:#{$minWidth}em) and (maxWidth:#{$maxWidth}em){
+        .#{$name}onlyhid{
+            display:none;
+        }
+        .#{$name}onlyshw{
+            display:block;
+        }
+    }
+}
+
+// Navigation or Menu styles
+ul.menu .ovflw{
+    right:0;
+}
+ul.menu .ovflw .ovflw{
+    right:100%;
+}
+
+// placeholder to be extended by hrtl for all screens
+%hrtl {
+    left: auto;
+}
+ul.menu.hrtl .ovflw{
+	@extend %hrtl; // extending placeholder %hrtl
+}
+// left auto for all hrtl initially for all screens
+@for $i from 1 through length($screens) {
+    $screen: nth($screens, $i);
+    $name: nth($screen, 1); 
+    ul.menu.#{$name}hrtl .ovflw{
+        @extend %hrtl; // extending placeholder %hrtl
+    }
+}
+
+
+// Form Styles
+/* Form Styles */
+label{
+    display: inline-block;
+    margin-bottom:0.25em;
+}
+input,textarea,select, button, btn, .inpgrp, .fldgrp{
+    font-size: 1em;
+    margin-bottom:1em;
+}
+input[type=radio], input[type=checkbox]{
+    margin-bottom:0.25em;
+}
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=tel],
+textarea,
+select,
+.inpadn{
+    border:1px solid #ccc;
+    height:2em;
+    padding: 0em 0.5em;
+}
+select option{
+    padding: 0.15em 0.5em;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=tel]:focus,
+textarea:focus,
+select:focus,
+button:focus,
+.btn:focus{
+    border-color: #{$highlightcolor};
+    box-shadow: 0px 0px 3px #{$highlightcolor};
+}
+input::placeholder{
+    color:rgba(100,100,100,0.8);
+}
+button, button:visited,
+.btn, .btn:visited{    
+    padding: 0.5em 1.5em;
+    background-color: #eee;
+    border:1px solid #d5d5d5;
+    cursor:pointer;
+}
+button:hover, button:active,
+.btn:hover, .btn:active{
+    background-color: #f9f9f9;
+}
+/*input groups*/
+.inpgrp{
+    display: table;
+}
+.inpgrp input,.inpgrp input[type=radio], .inpgrp input[type=checkbox]{
+    margin-bottom:0px;
+}
+.inpgrp>*{
+    display:table-cell;
+    vertical-align: middle;
+}
+.inpgrp>.input{
+    width:100%;
+}
+.inpgrp>.inpadn{
+    width:1%;
+    background-color: #f5f5f5;
+}
+.inpgrp{
+    border:1px solid #ccc;
+    border-radius:3px;
+}
+.inpgrp input, .inpgrp .inpadn{
+    border:none;
+    border-right:1px solid #ccc;
+    height:1.9em;
+}
+
+/*Border Radius*/
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=tel],
+textarea,
+select,
+.box{
+    border-radius: 3px;
+}
+.inpgrp input, .inpgrp select{
+    border-radius:0px;
+}
+.inpgrp input:first-child, .inpgrp .inpadn:first-child{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.inpgrp input:last-child, .inpgrp .inpadn:last-child{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-right: none;
+}
+.inpgrp input:focus{
+    border-size:1px;
+}
+
+/*checkbox*/
+.chkbox, .radio{
+    width: auto;
+}
+.chkbox .check, .chkbox .text,
+.radio .circle, .radio .text{
+    display: inline-block;
+    vertical-align:middle;
+}
+.chkbox .check, .radio .circle{   
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaa;
+    box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4);
+    transition: 0.4s all;
+}
+.radio .circle{
+    border-radius: 100%;
+}
+.chkbox input:checked + .check,
+.radio input:checked + .circle{
+    border-color:blue;
+    background-color:#{$highlightcolor};
+}
+.chkbox input:checked + .check{    
+    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns'><metadata><rdf:RDF><cc:Work rdf:about=''><dc:format>image/svg+xml</dc:format><dc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/><dc:title/></cc:Work></rdf:RDF></metadata><path d='m19.664 2.7119-10.439 10.7-4.8899-4.6355-3.4357 3.4375 8.3256 8.074 13.876-14.14z' fill='rgba(255,255,255,1)'/></svg>");
+}
+.radio input:checked + .circle{    
+    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns'><circle cx='12' cy='12' r='5.64' fill='rgba(255,255,255,1)'/></svg>");
+}
+/*Radio*/
+/*Push Switch*/
+.pusswch input:checked + .btn,
+.pusswch input:checked + .btn:visited{
+    box-shadow: inset 0px 0px 10px #aaa;
+}
+/*Toggle switch*/
+.tglswch{
+    width: 50px;
+    height: 28px;
+    margin-bottom: 1em;
+}
+.tglswch input,
+.pusswch input,
+.chkbox input,
+.radio input{
+    display: none;
+}
+/* Toggle Switch slider */
+.tglswch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4);
+}
+
+.tglswch .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.tglswch input:checked + .slider {
+    background-color: #{$highlightcolor};
+    border-color: blue;
+}
+
+.tglswch input:focus + .slider {
+    box-shadow: 0 0 1px #{$highlightcolor};
+}
+
+.tglswch input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+/* Rounded sliders */
+.tglswch .slider.round {
+    border-radius: 3px;
+}
+
+.tglswch .slider.round:before {
+    border-radius: 3px;
+}
+
+/*Box*/
+.box{
+    background-color:#f5f5f5;
+    border:1px solid #ddd;
+    padding:1em;
+}
