@@ -19,13 +19,43 @@ $xxxLargeScreen:xxxl,120,256;
 
 $highlightcolor:#66ccff;
 
+$boxtxtlightcolor:rgba(255,255,255,0.8);
+$boxtxtdarkcolor:rgba(0,0,0,0.8);
+
+$primcolor:#004e98;
+$scndcolor:#C9D0D7;
+$infocolor:#613f75;
+$sucscolor:#1B998B;
+$warncolor:#d95d39;
+$dngrcolor:#B93848;
+$lightcolor:#fff;
+$darkcolor:#111;
+
+$primbrdrcolor:rgba(0,78,152,0.6);
+$scndbrdrcolor:rgba(183,192,200,0.9);
+$infobrdrcolor:rgba(97,63,117,0.6);
+$sucsbrdrcolor:rgba(27,153,139,0.6);
+$warnbrdrcolor:rgba(217,93,57,0.6);
+$dngrbrdrcolor:rgba(185,56,72,0.6);
+$lightbrdrcolor:rgba(0,0,0,0.6);
+$darkbrdrcolor:rgba(150,150,150,0.6);
+
+$primhvrcolor:#065FB3;
+$scndhvrcolor:#BBC1C8;
+$infohvrcolor:#865BA0;
+$sucshvrcolor:#5DA19A;
+$warnhvrcolor:#D28771;
+$dngrhvrcolor:#C45764;
+$lighthvrcolor:#eee;
+$darkhvrcolor:#333;
+
+
 //Add screens to the list
 $screens: $smallScreen, $mediumScreen, $largeScreen, $xLargeScreen, $xxLargeScreen, $xxxLargeScreen;
-
 body {
 	width: 100%;
 	margin: 0px;
-	padding: 0px;
+	padding: 0px;	
 }
 .lft{
     float:left;
@@ -302,6 +332,98 @@ ul.menu.hrtl .ovflw{
     }
 }
 
+//Text Styles
+/* Text Styles */
+body,input,button {
+    font-family: "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+pre,
+code {
+    font-family: "DejaVu Sans Mono", Menlo, Consolas, monospace;
+}
+
+hr {
+    border: 0 solid #ccc;
+    border-top-width: 1px;
+    clear: both;
+    height: 0;
+}
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1.1rem;
+}
+
+/* `Spacing
+----------------------------------------------------------------------------------------------------*/
+
+ol {
+    list-style: decimal;
+}
+
+ul {
+    list-style: disc;
+}
+
+li {
+    margin-left: .5rem;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset,
+figure {
+    margin-top:0rem;
+    margin-bottom: .5rem;
+}
+
+/* `Alignments
+----------------------------------------------------------------------------------------------------*/
+.txtlft{
+    text-align:left;
+}
+.txtcnt{
+    text-align:center;
+}
+.txtrht{
+    text-align:right;
+}
+
 
 // Form Styles
 /* Form Styles */
@@ -328,7 +450,7 @@ textarea,
 select,
 .inpadn{
     border:1px solid #ccc;
-    height:2em;
+    height:2.4em;
     padding: 0em 0.5em;
 }
 select option{
@@ -351,7 +473,7 @@ input::placeholder{
 }
 button, button:visited,
 .btn, .btn:visited{    
-    padding: 0.5em 1.5em;
+    padding: 0.6em 1.5em;
     background-color: #eee;
     border:1px solid #d5d5d5;
     cursor:pointer;
@@ -385,7 +507,7 @@ button:hover, button:active,
 .inpgrp input, .inpgrp .inpadn{
     border:none;
     border-right:1px solid #ccc;
-    height:1.9em;
+    height:2.3em;
 }
 
 /*Border Radius*/
@@ -396,7 +518,8 @@ input[type=number],
 input[type=tel],
 textarea,
 select,
-.box{
+button,
+.btn{
     border-radius: 3px;
 }
 .inpgrp input, .inpgrp select{
@@ -436,8 +559,8 @@ select,
 }
 .chkbox input:checked + .check,
 .radio input:checked + .circle{
-    border-color:blue;
-    background-color:#{$highlightcolor};
+    border-color:#{$primbrdrcolor};
+    background-color:#{$primcolor};
 }
 .chkbox input:checked + .check{    
     background-image: url("data:image/svg+xml;utf8,<svg version='1.1' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:cc='http://creativecommons.org/ns' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns'><metadata><rdf:RDF><cc:Work rdf:about=''><dc:format>image/svg+xml</dc:format><dc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage'/><dc:title/></cc:Work></rdf:RDF></metadata><path d='m19.664 2.7119-10.439 10.7-4.8899-4.6355-3.4357 3.4375 8.3256 8.074 13.876-14.14z' fill='rgba(255,255,255,1)'/></svg>");
@@ -476,7 +599,6 @@ select,
     transition: .4s;
     box-sizing: border-box;
     border: 1px solid #aaa;
-    box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4);
 }
 
 .tglswch .slider:before {
@@ -486,14 +608,14 @@ select,
     width: 22px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: #fff;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 .tglswch input:checked + .slider {
-    background-color: #{$highlightcolor};
-    border-color: blue;
+    background-color: #{$primcolor};
+    border-color: #{$primbrdrcolor};
 }
 
 .tglswch input:focus + .slider {
@@ -514,24 +636,140 @@ select,
     border-radius: 3px;
 }
 
+
 /*Box*/
-.box {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
+.box{
+    padding:1em;
 }
 
-.box>.head,
-.box>.content,
-.box>.foot{
-    padding: 1em;
+/*Fills*/
+.fill.prim, .fill.prim:visited{
+    background-color: #{$primcolor};
+    color: #{$boxtxtlightcolor};
+}
+.fill.scnd, .fill.scnd:visited{
+    background-color: #{$scndcolor};
+    color: #{$boxtxtdarkcolor};
+}
+.fill.info, .fill.info:visited{
+    background-color: #{$infocolor};
+    color: #{$boxtxtlightcolor};
+}
+.fill.sucs, .fill.sucs:visited{
+    background-color: #{$sucscolor};
+    color: #{$boxtxtlightcolor};
+}
+.fill.warn, .fill.warn:visited{
+    background-color: #{$warncolor};
+    color: #{$boxtxtlightcolor};
+}
+.fill.dngr, .fill.dngr:visited{
+    background-color: #{$dngrcolor};
+    color: #{$boxtxtlightcolor};
+}
+.fill.light, .fill.light:visited{
+    background-color: #{$lightcolor};
+    color: #{$boxtxtdarkcolor};
+}
+.fill.dark,.fill.dark:visited{
+    background-color: #{$darkcolor};
+    color: #{$boxtxtlightcolor};
 }
 
-.box>.head{
-    border-bottom:1px solid #ddd;
+.fill.prim.hvr:hover, .fill.prim.hvr:focus{
+    background-color: #{$primhvrcolor};
+}
+.fill.scnd.hvr:hover, .fill.scnd.hvr:focus{
+    background-color: #{$scndhvrcolor};
+}
+.fill.info.hvr:hover, .fill.info.hvr:focus{
+    background-color: #{$infohvrcolor};
+}
+.fill.sucs.hvr:hover, .fill.sucs.hvr:focus{
+    background-color: #{$sucshvrcolor};
+}
+.fill.warn.hvr:hover, .fill.warn.hvr:focus{
+    background-color: #{$warnhvrcolor};
+}
+.fill.dngr.hvr:hover, .fill.dngr.hvr:focus{
+    background-color: #{$dngrhvrcolor};
+}
+.fill.light.hvr:hover, .fill.light.hvr:focus{
+    background-color: #{$lighthvrcolor};
+}
+.fill.dark.hvr:hover, .fill.dark.hvr:focus{
+    background-color: #{$darkhvrcolor};
 }
 
-.box>.foot{
-    border-top:1px solid #ddd;
+/*borders*/
+.brdr.b-all{
+    border:1px solid;
+}
+.brdr.b-top{
+    border-top:1px solid;
+}
+.brdr.b-rht{
+    border-right:1px solid;
+}
+.brdr.b-bot{
+    border-bottom:1px solid;
+}
+.brdr.b-lht{
+    border-left: 1px solid;
+}
+.brdr.round{
+    border-radius:4px;
+}
+
+.brdr{
+    border-color: #ddd;
+}
+.brdr.prim{
+    border-color: #{$primbrdrcolor};
+}
+.brdr.scnd{
+    border-color: #{$scndbrdrcolor};
+}
+.brdr.info{
+    border-color: #{$infobrdrcolor};
+}
+.brdr.sucs{
+    border-color: #{$sucsbrdrcolor};
+}
+.brdr.warn{
+    border-color: #{$warnbrdrcolor};
+}
+.brdr.dngr{
+    border-color: #{$dngrbrdrcolor};
+}
+.brdr.b-none{
+    border:none;
+}
+
+/*Text*/
+.txt.prim{
+    color: #{$primcolor};
+}
+.txt.scnd{
+    color: #{$scndcolor};
+}
+.txt.info{
+    color: #{$infocolor};
+}
+.txt.sucs{
+    color: #{$sucscolor};
+}
+.txt.warn{
+    color: #{$warncolor};
+}
+.txt.dngr{
+    color: #{$dngrcolor};
+}
+.txt.light{
+    color: #{$lightcolor};
+}
+.txt.dark{
+    color: #{$darkcolor};
 }
 
 /* Margins */
