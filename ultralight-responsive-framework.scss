@@ -6,16 +6,15 @@
 
 // Define columns, gutter and container width
 $columns:12;
-$gutter:0.5rem;
-$containerWidth:62.5em;
+$gutter:15px;
 
 //Define Screens with name, min-width, max-width
-$smallScreen:s,0,39.9375;
-$mediumScreen:m,40,63.9375;
-$largeScreen:l,64,74.9375;
-$xLargeScreen:xl,75,89.9375;
-$xxLargeScreen:xxl,90,119.9375;
-$xxxLargeScreen:xxxl,120,256;
+$smallScreen:s,0,575.98;
+$mediumScreen:m,576,767.98;
+$largeScreen:l,768,991.98;
+$xLargeScreen:xl,992,1199.98;
+$xxLargeScreen:xxl,1200,1599.98;
+$xxxLargeScreen:xxxl,1600,4000;
 
 //define components border radius;
 $compradius:3px;
@@ -69,13 +68,12 @@ body {
 .frht{
     float:right;
 }
+.cntr,.cntr-fluid{
+	width: 100%;
+}
 .cntr{
-    width: $containerWidth;
     max-width: 100%;
     margin: 0 auto;
-}
-.cntr-fluid{
-    width: 100%;
 }
 .inlblk{
     display:inline-block !important;
@@ -327,7 +325,10 @@ ul.menu.acdn ul{
 @for $i from 2 through length($screens) {
     $screen: nth($screens, $i); 
     $minWidth: nth($screen, 2);
-    @media screen and (min-width:#{$minWidth}em){
+    @media screen and (min-width:#{$minWidth}px){
+    	.cntr{
+    		width:#{$minWidth}px;
+    	}
         @include screenStyles($screen);  
     }
 }
@@ -364,7 +365,7 @@ ul.menu.acdn ul{
     $minWidth: nth($screen, 2);
     $maxWidth: nth($screen, 3);
     $name: nth($screen, 1); 
-    @media screen and (min-width:#{$minWidth}em) and (maxWidth:#{$maxWidth}em){
+    @media screen and (min-width:#{$minWidth}px) and (maxWidth:#{$maxWidth}px){
         .#{$name}onlyhid{
             display:none;
         }

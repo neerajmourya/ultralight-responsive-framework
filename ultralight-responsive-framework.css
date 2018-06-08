@@ -14,13 +14,12 @@ body {
 .frht {
   float: right; }
 
+.cntr, .cntr-fluid {
+  width: 100%; }
+
 .cntr {
-  width: 62.5em;
   max-width: 100%;
   margin: 0 auto; }
-
-.cntr-fluid {
-  width: 100%; }
 
 .inlblk {
   display: inline-block !important; }
@@ -35,12 +34,12 @@ body {
 .cl {
   float: left;
   width: 100%;
-  padding: 0 0.5rem; }
+  padding: 0 15px; }
 
 .rw.out {
   width: auto;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem; }
+  margin-left: -15px;
+  margin-right: -15px; }
 
 .rw.ngt > .cl {
   padding: 0; }
@@ -342,7 +341,10 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   position: relative;
   left: 0; }
 
-@media screen and (min-width: 40em) {
+@media screen and (min-width: 576px) {
+  .cntr {
+    width: 576px; }
+
   .mcl {
     display: block;
     float: left;
@@ -523,7 +525,10 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   ul.menu.macdn ul, ul.menu.macdn ul ul {
     position: relative;
     left: 0; } }
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 768px) {
+  .cntr {
+    width: 768px; }
+
   .lcl {
     display: block;
     float: left;
@@ -704,7 +709,10 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   ul.menu.lacdn ul, ul.menu.lacdn ul ul {
     position: relative;
     left: 0; } }
-@media screen and (min-width: 75em) {
+@media screen and (min-width: 992px) {
+  .cntr {
+    width: 992px; }
+
   .xlcl {
     display: block;
     float: left;
@@ -885,7 +893,10 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   ul.menu.xlacdn ul, ul.menu.xlacdn ul ul {
     position: relative;
     left: 0; } }
-@media screen and (min-width: 90em) {
+@media screen and (min-width: 1200px) {
+  .cntr {
+    width: 1200px; }
+
   .xxlcl {
     display: block;
     float: left;
@@ -1066,7 +1077,10 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   ul.menu.xxlacdn ul, ul.menu.xxlacdn ul ul {
     position: relative;
     left: 0; } }
-@media screen and (min-width: 120em) {
+@media screen and (min-width: 1600px) {
+  .cntr {
+    width: 1600px; }
+
   .xxxlcl {
     display: block;
     float: left;
@@ -1253,37 +1267,37 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
 .sonlyshw, .monlyshw, .lonlyshw, .xlonlyshw, .xxlonlyshw, .xxxlonlyshw {
   display: none; }
 
-@media screen and (min-width: 0em) and (maxWidth: 39.9375em) {
+@media screen and (min-width: 0px) and (maxWidth: 575.98px) {
   .sonlyhid {
     display: none; }
 
   .sonlyshw {
     display: block; } }
-@media screen and (min-width: 40em) and (maxWidth: 63.9375em) {
+@media screen and (min-width: 576px) and (maxWidth: 767.98px) {
   .monlyhid {
     display: none; }
 
   .monlyshw {
     display: block; } }
-@media screen and (min-width: 64em) and (maxWidth: 74.9375em) {
+@media screen and (min-width: 768px) and (maxWidth: 991.98px) {
   .lonlyhid {
     display: none; }
 
   .lonlyshw {
     display: block; } }
-@media screen and (min-width: 75em) and (maxWidth: 89.9375em) {
+@media screen and (min-width: 992px) and (maxWidth: 1199.98px) {
   .xlonlyhid {
     display: none; }
 
   .xlonlyshw {
     display: block; } }
-@media screen and (min-width: 90em) and (maxWidth: 119.9375em) {
+@media screen and (min-width: 1200px) and (maxWidth: 1599.98px) {
   .xxlonlyhid {
     display: none; }
 
   .xxlonlyshw {
     display: block; } }
-@media screen and (min-width: 120em) and (maxWidth: 256em) {
+@media screen and (min-width: 1600px) and (maxWidth: 4000px) {
   .xxxlonlyhid {
     display: none; }
 
