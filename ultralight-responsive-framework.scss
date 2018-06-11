@@ -9,12 +9,12 @@ $columns:12;
 $gutter:15px;
 
 //Define Screens with name, min-width, max-width
-$smallScreen:s,0,575.98;
-$mediumScreen:m,576,767.98;
-$largeScreen:l,768,991.98;
-$xLargeScreen:xl,992,1199.98;
-$xxLargeScreen:xxl,1200,1599.98;
-$xxxLargeScreen:xxxl,1600,4000;
+$smallScreen:s,0,575.98,540;
+$mediumScreen:m,576,767.98,720;
+$largeScreen:l,768,991.98,960;
+$xLargeScreen:xl,992,1199.98,1140;
+$xxLargeScreen:xxl,1200,1599.98,1520;
+$xxxLargeScreen:xxxl,1600,1920,1800;
 
 //define components border radius;
 $compradius:3px;
@@ -57,54 +57,90 @@ $darkhvrcolor:#0B132B;
 
 //Add screens to the list
 $screens: $smallScreen, $mediumScreen, $largeScreen, $xLargeScreen, $xxLargeScreen, $xxxLargeScreen;
-body {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;	
+* {    
+    box-sizing: border-box;
 }
-.flht{
-    float:left;
-}
-.frht{
-    float:right;
+html, body {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 .cntr,.cntr-fluid{
+	position: relative;
 	width: 100%;
 }
 .cntr{
     max-width: 100%;
     margin: 0 auto;
 }
-.inlblk{
-    display:inline-block !important;
+.cntr .cntr, .cntr .cntr-fluid, .cntr-fluid .cntr, .cntr-fluid .cntr-fluid{
+	margin:0;
 }
-.rw::before, .rw::after, .clrbox::before, .clrbox::after {
-    content: " ";
-    display: table;
-}
-.rw::after, .clrbox::after {
-    clear: both;
-}
-.cl {
-    float: left;
-    width:100%;
-    padding: 0 $gutter;
+.rw,.cl{
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 .rw.out{
     width:auto;
     margin-left: -$gutter;
     margin-right: -$gutter;    
 }
+.cl {
+    padding: 0 $gutter;
+    flex:1;
+}
 .rw.ngt>.cl {
     padding: 0;
 }
-.tbl{
-    display:table;
-    width:100%;
-    border-collapse: collapse;
+//Flex styles
+.fdcol{
+	flex-direction: column;
 }
-.rw.tbl{
-    border-collapse: separate;
+.ais{
+	align-items: flex-start;
+}
+.aic{
+	align-items: center;
+}
+.aie{
+	align-items: flex-end;
+}
+.aist{
+	align-items: stretch;
+}
+.ass{
+	align-self: flex-start;
+}
+.asc{
+	align-self: center;
+}
+.ase{
+	align-self: flex-end;
+}
+.asst{
+	align-self: stretch;
+}
+.jcs{
+	justify-content: flex-start;
+}
+.jcc{
+	justify-content: center;
+}
+.jce{
+	justify-content: flex-end;
+}
+.jcsa{
+	justify-content: space-around;
+}
+.jcsb{
+	justify-content: space-between;
+}
+
+img{
+    max-width: 100%;
 }
 .tblwrap{
     width:100%;
@@ -112,28 +148,6 @@ body {
 }
 .tblwrap>table.tbl{
     min-width:768px;
-}
-.tcl{
-    display: table-cell;
-    width:auto;
-}
-.vtop{
-    vertical-align: top;
-}
-.vmid{
-    vertical-align: middle;
-}
-.vbot{
-    vertical-align: bottom;
-}
-html, body, div {
-    position: relative;
-}
-*{
-    box-sizing: border-box;
-}
-img{
-    max-width: 100%;
 }
 
 // Navigation or Menu Styles
@@ -240,22 +254,11 @@ ul.menu.acdn ul{
 // mixin to define styles for a screen
 @mixin screenStyles($screen){
     $name: nth($screen, 1);
-
-    @if $name!=(nth((nth($screens, 1)), 1)){
-        // display block column for screen
-        .#{$name}cl{
-            display:block;
-            float: left;
-            width:100%;
-        } 
-        //display table-cell for screen
-        .#{$name}tcl{
-            float:none;
-            display:table-cell;
-            width:auto;
-        }
-    }
-
+	$cntrWidth: nth($screen, 4);
+    .cntr{
+		width:#{$cntrWidth}px;
+	}
+	
     // exp, hid, shw classes for each screen
     .#{$name}exp, .#{$name}exp>*{
         width:100%;
@@ -264,29 +267,33 @@ ul.menu.acdn ul{
         display:none;
     }
     .#{$name}shw{
-        display:block;
+        display:flex;
     }
 
     // columns styles by looping through the number of columns
     @for $col from 1 through $columns{
-        // Calculate the width of the column
+    	// Calculate the width of the column
         $width:($col * 100% / $columns);
         .#{$name}#{$col}{
-            width: $width;
+            flex: 0 0 $width;
         }
-
+        
         // pus, pul, off classes for each columns except last column
         @if $col!=$columns{
-            .#{$name}pus#{$col}{
-                left:$width;
-            }
-            .#{$name}pul#{$col}{
-                left:-$width;
-            }
-            .#{$name}off#{$col}{
-                margin-left:$width;
-            }
+            .#{$name}ord#{$col}{
+		        order:#{$col};
+	        }
+	        .#{$name}off#{$col}{
+		        margin-left:$width;
+	        }
         }
+    }
+    
+    .#{$name}ordfirst{
+        order:-1;
+    }
+    .#{$name}ordlast{
+        order:13;
     }
 
     // Navigation or Menu Styles
@@ -326,16 +333,13 @@ ul.menu.acdn ul{
     $screen: nth($screens, $i); 
     $minWidth: nth($screen, 2);
     @media screen and (min-width:#{$minWidth}px){
-    	.cntr{
-    		width:#{$minWidth}px;
-    	}
         @include screenStyles($screen);  
     }
 }
 
 // placeholder to be extended by onlyhid classes for all screens
 %shwonlyhid {
-    display:block;
+    display:flex;
 }
 // display block for all onlyhid initially for all screens
 @for $i from 1 through length($screens) {
@@ -370,7 +374,7 @@ ul.menu.acdn ul{
             display:none;
         }
         .#{$name}onlyshw{
-            display:block;
+            display:flex;
         }
     }
 }
