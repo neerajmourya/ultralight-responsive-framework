@@ -42,7 +42,10 @@ html, body {
 .cntr .cntr, .cntr .cntr-fluid, .cntr-fluid .cntr, .cntr-fluid .cntr-fluid {
   margin: 0; }
 
-.rw, .cl {
+.rw, .cl,
+button:hover, button:active,
+.btn:hover, .btn:active,
+.inpgrp, box {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -60,6 +63,9 @@ html, body {
 
 .rw.ngt > .cl {
   padding: 0; }
+
+.fdrow {
+  flex-direction: row; }
 
 .fdcol {
   flex-direction: column; }
@@ -113,33 +119,33 @@ img {
 .tblwrap > table.tbl {
   min-width: 768px; }
 
+.nav {
+  z-index: 9999; }
+
+.nav ul.menu li a {
+  line-height: 3.5; }
+
+.nav ul.menu li li a {
+  line-height: 2.5; }
+
+ul.menu, ul.menu ul {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  flex-direction: column; }
+
 ul.menu, ul.menu * {
-  display: block;
   margin: 0px;
   padding: 0px; }
 
-ul.menu::before, ul.menu::after {
-  content: " ";
-  display: table; }
-
-ul.menu::after {
-  clear: both; }
-
-ul.menu, ul.menu li {
-  position: relative; }
-
-ul.menu li {
-  margin: 0px;
-  list-style: none; }
-
 ul.menu li a {
-  padding: 0 1rem;
-  text-decoration: none;
-  line-height: 2.5; }
+  padding: 0.3rem 0.5rem;
+  text-decoration: none; }
 
 ul.menu ul {
   position: absolute;
-  display: block;
   top: 0;
   left: 100%;
   /*width:100%;*/
@@ -162,21 +168,9 @@ ul.menu.hover ul,
 ul.menu li.ovfvis > ul {
   overflow: visible; }
 
-.nav {
-  z-index: 9999; }
-
-.nav ul.menu li a {
-  line-height: 3.5; }
-
-.nav ul.menu li li a {
-  line-height: 2.5; }
-
 /*********Horizontal*********/
-ul.menu.hrtl li {
-  float: left; }
-
-ul.menu.hrtl li li {
-  float: none; }
+ul.menu.hrtl {
+  flex-direction: row; }
 
 ul.menu.hrtl ul {
   top: 100%;
@@ -186,12 +180,12 @@ ul.menu.hrtl ul ul {
   top: 0;
   left: 100%; }
 
-ul.menu.hrtl ul.rht {
-  left: unset;
+ul.menu.hrtl.rht > ul {
+  left: auto;
   right: 0; }
 
-ul.menu.hrtl ul.rht ul {
-  left: unset;
+ul.menu.hrtl.rht > ul ul {
+  left: auto;
   right: 100%; }
 
 /*********Accordian*********/
@@ -322,19 +316,16 @@ ul.menu.acdn ul {
 .sordlast {
   order: 13; }
 
-ul.menu.svrtl li {
-  float: none; }
+ul.menu.svrtl {
+  flex-direction: column; }
 
 ul.menu.svrtl ul {
   position: absolute;
   top: 0;
   left: 100%; }
 
-ul.menu.shrtl li {
-  float: left; }
-
-ul.menu.shrtl li li {
-  float: none; }
+ul.menu.shrtl {
+  flex-direction: row; }
 
 ul.menu.shrtl ul {
   position: absolute;
@@ -470,19 +461,16 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   .mordlast {
     order: 13; }
 
-  ul.menu.mvrtl li {
-    float: none; }
+  ul.menu.mvrtl {
+    flex-direction: column; }
 
   ul.menu.mvrtl ul {
     position: absolute;
     top: 0;
     left: 100%; }
 
-  ul.menu.mhrtl li {
-    float: left; }
-
-  ul.menu.mhrtl li li {
-    float: none; }
+  ul.menu.mhrtl {
+    flex-direction: row; }
 
   ul.menu.mhrtl ul {
     position: absolute;
@@ -617,19 +605,16 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   .lordlast {
     order: 13; }
 
-  ul.menu.lvrtl li {
-    float: none; }
+  ul.menu.lvrtl {
+    flex-direction: column; }
 
   ul.menu.lvrtl ul {
     position: absolute;
     top: 0;
     left: 100%; }
 
-  ul.menu.lhrtl li {
-    float: left; }
-
-  ul.menu.lhrtl li li {
-    float: none; }
+  ul.menu.lhrtl {
+    flex-direction: row; }
 
   ul.menu.lhrtl ul {
     position: absolute;
@@ -764,19 +749,16 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   .xlordlast {
     order: 13; }
 
-  ul.menu.xlvrtl li {
-    float: none; }
+  ul.menu.xlvrtl {
+    flex-direction: column; }
 
   ul.menu.xlvrtl ul {
     position: absolute;
     top: 0;
     left: 100%; }
 
-  ul.menu.xlhrtl li {
-    float: left; }
-
-  ul.menu.xlhrtl li li {
-    float: none; }
+  ul.menu.xlhrtl {
+    flex-direction: row; }
 
   ul.menu.xlhrtl ul {
     position: absolute;
@@ -911,19 +893,16 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   .xxlordlast {
     order: 13; }
 
-  ul.menu.xxlvrtl li {
-    float: none; }
+  ul.menu.xxlvrtl {
+    flex-direction: column; }
 
   ul.menu.xxlvrtl ul {
     position: absolute;
     top: 0;
     left: 100%; }
 
-  ul.menu.xxlhrtl li {
-    float: left; }
-
-  ul.menu.xxlhrtl li li {
-    float: none; }
+  ul.menu.xxlhrtl {
+    flex-direction: row; }
 
   ul.menu.xxlhrtl ul {
     position: absolute;
@@ -1058,19 +1037,16 @@ ul.menu.sacdn ul, ul.menu.sacdn ul ul {
   .xxxlordlast {
     order: 13; }
 
-  ul.menu.xxxlvrtl li {
-    float: none; }
+  ul.menu.xxxlvrtl {
+    flex-direction: column; }
 
   ul.menu.xxxlvrtl ul {
     position: absolute;
     top: 0;
     left: 100%; }
 
-  ul.menu.xxxlhrtl li {
-    float: left; }
-
-  ul.menu.xxxlhrtl li li {
-    float: none; }
+  ul.menu.xxxlhrtl {
+    flex-direction: row; }
 
   ul.menu.xxxlhrtl ul {
     position: absolute;
@@ -1258,7 +1234,6 @@ input::placeholder {
 
 button, button:visited,
 .btn, .btn:visited {
-  display: inline-block;
   padding: 0.5em 1.5em;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -1271,29 +1246,33 @@ button:hover, button:active,
 
 /*input groups*/
 .inpgrp {
-  display: table; }
+  align-items: stretch;
+  flex: 1;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  height: 2.4em;
+  overflow: hidden; }
 
-.inpgrp .input, .inpgrp input[type=radio], .inpgrp input[type=checkbox] {
+.inpgrp > .input {
+  flex: 1;
+  border: none;
+  border-right: 1px solid #cccccc; }
+
+.inpgrp input, .inpgrp select {
   margin-bottom: 0px; }
 
 .inpgrp > * {
-  display: table-cell;
-  vertical-align: middle; }
-
-.inpgrp > .input {
-  width: 100%; }
-
-.inpgrp > .inpadn {
-  width: 1%;
-  background-color: #f5f5f5; }
-
-.inpgrp {
-  border: 1px solid #cccccc;
-  border-radius: 3px; }
-
-.inpgrp .input, .inpgrp .inpadn {
+  display: flex;
   border: none;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid #cccccc; }
+
+.inpgrp .input:last-child, .inpgrp .inpadn:last-child, .inpgrp .btn:last-child {
+  border-right: none; }
+
+.inpgrp .inpadn {
+  line-height: 2.3em; }
+
+.inpgrp .btn {
   height: 2.3em; }
 
 .inpgrp.naked .input, .inpgrp.naked .inpadn {
@@ -1439,13 +1418,26 @@ button,
 .tglswch .slider.round:before {
   border-radius: 3px; }
 
-.btn.sm {
-  padding: 0.4em 0.9em;
-  font-size: 90%; }
+.size-sm {
+  font-size: 12px; }
 
-.btn.lg {
-  padding: 0.8em 2.1em;
-  font-size: 110%; }
+.size-md {
+  font-size: 14px; }
+
+.size-norm {
+  font-size: 16px; }
+
+.size-lg {
+  font-size: 18px; }
+
+.size-xl {
+  font-size: 20px; }
+
+.size-xxl {
+  font-size: 24px; }
+
+.size-xxxl {
+  font-size: 30px; }
 
 /*Table schemes*/
 .tbl th, .tbl td {
@@ -1535,7 +1527,8 @@ button,
 
 /*Box*/
 .box {
-  padding: 1em; }
+  padding: 1em;
+  flex: 1; }
 
 .box.sm {
   padding: 0.5em; }

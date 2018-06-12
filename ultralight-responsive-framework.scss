@@ -96,7 +96,10 @@ html, body {
 .cntr .cntr, .cntr .cntr-fluid, .cntr-fluid .cntr, .cntr-fluid .cntr-fluid{
 	margin:0;
 }
-.rw,.cl{
+.rw,.cl,
+button:hover, button:active,
+.btn:hover, .btn:active,
+.inpgrp, box{
 	position: relative;
 	display: -ms-flexbox;
 	display: flex;
@@ -116,6 +119,9 @@ html, body {
     padding: 0;
 }
 //Flex styles
+.fdrow{
+	flex-direction: row;
+}
 .fdcol{
 	flex-direction: column;
 }
@@ -171,33 +177,34 @@ img{
 }
 
 // Navigation or Menu Styles
+.nav{
+    z-index: 9999;
+}
+.nav ul.menu li a{
+    line-height: 3.5;
+}
+.nav ul.menu li li a{
+    line-height: 2.5;
+}
+
+ul.menu, ul.menu ul{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style:none;
+    flex-direction: column;
+}
 ul.menu, ul.menu *{    
-    display: block;
     margin:0px;
     padding: 0px;
 }
-ul.menu::before, ul.menu::after{
-    content: " ";
-    display: table; }
-
-ul.menu::after{
-    clear: both; }
-
-ul.menu, ul.menu li{
-    position:relative;
-}
-ul.menu li{
-    margin:0px;
-    list-style: none;
-}
-ul.menu li a{
-    padding: 0 1rem;
+ul.menu li a{    
+    padding: 0.3rem 0.5rem;
     text-decoration: none;
-    line-height: 2.5;
 }
 ul.menu ul{
     position: absolute;
-    display: block;
     top: 0;
     left:100%;
     /*width:100%;*/
@@ -220,21 +227,11 @@ ul.menu.hover ul,
 ul.menu li.ovfvis>ul{
     overflow: visible;
 }
-.nav{
-    z-index: 9999;
-}
-.nav ul.menu li a{
-    line-height: 3.5;
-}
-.nav ul.menu li li a{
-    line-height: 2.5;
-}
+
+
 /*********Horizontal*********/
-ul.menu.hrtl li{
-    float:left;
-}
-ul.menu.hrtl li li{
-    float:none;
+ul.menu.hrtl{
+    flex-direction: row;
 }
 ul.menu.hrtl ul{
     top:100%;
@@ -244,12 +241,12 @@ ul.menu.hrtl ul ul{
     top:0;
     left:100%;
 }
-ul.menu.hrtl ul.rht{
-    left:unset;
+ul.menu.hrtl.rht>ul{
+    left:auto;
     right:0;
 }
-ul.menu.hrtl ul.rht ul{
-    left:unset;
+ul.menu.hrtl.rht>ul ul{
+    left:auto;
     right:100%;
 }
 /*********Accordian*********/
@@ -317,19 +314,16 @@ ul.menu.acdn ul{
     }
 
     // Navigation or Menu Styles
-    ul.menu.#{$name}vrtl li{
-        float:none;
+    ul.menu.#{$name}vrtl{
+        flex-direction: column;
     }
     ul.menu.#{$name}vrtl ul{
         position:absolute;
         top:0;
         left:100%;
     }
-    ul.menu.#{$name}hrtl li{
-        float:left;
-    }
-    ul.menu.#{$name}hrtl li li{
-        float:none;
+    ul.menu.#{$name}hrtl{
+        flex-direction: row;
     }
     ul.menu.#{$name}hrtl ul{
         position:absolute;
@@ -564,8 +558,7 @@ input::placeholder{
     color:rgba(100,100,100,0.8);
 }
 button, button:visited,
-.btn, .btn:visited{    
-    display: inline-block;
+.btn, .btn:visited{
     padding: 0.5em 1.5em;
     background-color: #{$lightcolor};
     border:1px solid #{$lightbrdrcolor};
@@ -578,30 +571,34 @@ button:hover, button:active,
 }
 /*input groups*/
 .inpgrp{
-    display: table;
+	align-items: stretch;
+	flex:1;
+	border:1px solid #{$formcompbrdrcolor};
+    border-radius:#{$compradius};
+    height: 2.4em;
+    overflow:hidden;
 }
-.inpgrp .input,.inpgrp input[type=radio], .inpgrp input[type=checkbox]{
+.inpgrp>.input{
+    flex:1;
+    border:none;
+    border-right:1px solid #{$formcompbrdrcolor};
+}
+.inpgrp input, .inpgrp select{
     margin-bottom:0px;
 }
 .inpgrp>*{
-    display:table-cell;
-    vertical-align: middle;
-}
-.inpgrp>.input{
-    width:100%;
-}
-.inpgrp>.inpadn{
-    width:1%;
-    background-color: #f5f5f5;
-}
-.inpgrp{
-    border:1px solid #{$formcompbrdrcolor};
-    border-radius:#{$compradius};
-}
-.inpgrp .input, .inpgrp .inpadn{
+    display:flex;
     border:none;
     border-right:1px solid #{$formcompbrdrcolor};
-    height:2.3em;
+}
+.inpgrp .input:last-child, .inpgrp .inpadn:last-child, .inpgrp .btn:last-child{
+	border-right:none;
+}
+.inpgrp .inpadn{
+	line-height:2.3em;
+}
+.inpgrp .btn{
+	height:2.3em;
 }
 
 .inpgrp.naked .input, .inpgrp.naked .inpadn{
@@ -757,15 +754,27 @@ button,
     border-radius: #{$compradius};
 }
 
-.btn.sm{
-    padding: 0.4em 0.9em;
-    font-size:90%;
+.size-sm{
+	font-size:12px;
 }
-.btn.lg{
-    padding: 0.8em 2.1em;
-    font-size:110%;
+.size-md{
+	font-size:14px;
 }
-
+.size-norm{
+	font-size:16px;
+}
+.size-lg{
+	font-size:18px;
+}
+.size-xl{
+	font-size:20px;
+}
+.size-xxl{
+	font-size:24px;
+}
+.size-xxxl{
+	font-size:30px;
+}
 
 /*Table schemes*/
 .tbl th, .tbl td{
@@ -859,6 +868,7 @@ button,
 /*Box*/
 .box{
     padding:1em;
+	flex:1;
 }
 .box.sm{
     padding:0.5em;
