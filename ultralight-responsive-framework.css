@@ -70,6 +70,9 @@ button:hover, button:active,
 .fdcol {
   flex-direction: column; }
 
+.flinit {
+  flex: initial; }
+
 .ais {
   align-items: flex-start; }
 
