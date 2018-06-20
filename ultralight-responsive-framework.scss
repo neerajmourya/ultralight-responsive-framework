@@ -29,12 +29,12 @@ $columns:12;
 $gutter:15px;
 
 //Define Screens with name, min-width, max-width
-$smallScreen:s,0,575.98,540;
-$mediumScreen:m,576,767.98,720;
-$largeScreen:l,768,991.98,960;
-$xLargeScreen:xl,992,1199.98,1140;
-$xxLargeScreen:xxl,1200,1599.98,1520;
-$xxxLargeScreen:xxxl,1600,1920,1800;
+$smallScreen:s,0,575.98;
+$mediumScreen:m,576,767.98,540;
+$largeScreen:l,768,991.98,720;
+$xLargeScreen:xl,992,1199.98,960;
+$xxLargeScreen:xxl,1200,1599.98,1140;
+$xxxLargeScreen:xxxl,1600,1920,1520;
 
 //define components border radius;
 $compradius:3px;
@@ -80,6 +80,10 @@ $screens: $smallScreen, $mediumScreen, $largeScreen, $xLargeScreen, $xxLargeScre
 * {    
     box-sizing: border-box;
 }
+html{
+	overflow-y: auto;
+	overflow-x: hidden;
+}
 html, body {
 	width: 100%;
 	margin: 0px;
@@ -96,11 +100,7 @@ html, body {
 .cntr .cntr, .cntr .cntr-fluid, .cntr-fluid .cntr, .cntr-fluid .cntr-fluid{
 	margin:0;
 }
-.rw,.cl,
-button:hover, button:active,
-.btn:hover, .btn:active,
-.inpgrp, box{
-	position: relative;
+.rw, .cl, button, .btn, .inpgrp, box{
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
@@ -114,9 +114,14 @@ button:hover, button:active,
 .cl {
     padding: 0 $gutter;
     flex:1;
+    max-width:100%;
 }
 .rw.ngt>.cl {
     padding: 0;
+}
+.fulwid{
+	width:100%;
+	max-width:100%;
 }
 //Flex styles
 .fdrow{
@@ -124,9 +129,6 @@ button:hover, button:active,
 }
 .fdcol{
 	flex-direction: column;
-}
-.flinit{
-	flex: initial;
 }
 .ais{
 	align-items: flex-start;
@@ -183,7 +185,7 @@ img{
 .nav{
     z-index: 9999;
 }
-.nav ul.menu li a{
+.nav ul.menu li a, .nav .site-title{
     line-height: 3.5;
 }
 .nav ul.menu li li a{
@@ -202,8 +204,12 @@ ul.menu, ul.menu *{
     margin:0px;
     padding: 0px;
 }
+ul.menu li{
+	position:relative;
+}
 ul.menu li a{    
-    padding: 0.3rem 0.5rem;
+	display: block;
+    padding: 0rem 1rem;
     text-decoration: none;
 }
 ul.menu ul{
@@ -244,11 +250,11 @@ ul.menu.hrtl ul ul{
     top:0;
     left:100%;
 }
-ul.menu.hrtl.rht>ul{
+ul.menu.hrtl.rht ul{
     left:auto;
     right:0;
 }
-ul.menu.hrtl.rht>ul ul{
+ul.menu.hrtl.rht ul ul{
     left:auto;
     right:100%;
 }
@@ -274,11 +280,6 @@ ul.menu.acdn ul{
 // mixin to define styles for a screen
 @mixin screenStyles($screen){
     $name: nth($screen, 1);
-	$cntrWidth: nth($screen, 4);
-    .cntr{
-		width:#{$cntrWidth}px;
-	}
-	
     // exp, hid, shw classes for each screen
     .#{$name}exp, .#{$name}exp>*{
         width:100%;
@@ -308,7 +309,9 @@ ul.menu.acdn ul{
 	        }
         }
     }
-    
+    .#{$name}auto{
+        flex:initial;
+    }
     .#{$name}ordfirst{
         order:-1;
     }
@@ -341,6 +344,14 @@ ul.menu.acdn ul{
         position: relative;
         left:0;
     }
+    ul.menu.#{$name}hrtl.rht ul{
+		left:auto;
+		right:0;
+	}
+	ul.menu.#{$name}hrtl.rht ul ul{
+		left:auto;
+		right:100%;
+	}
 }
 
 // call mixin screenStyles to define styles for first screen
@@ -349,7 +360,11 @@ ul.menu.acdn ul{
 @for $i from 2 through length($screens) {
     $screen: nth($screens, $i); 
     $minWidth: nth($screen, 2);
-    @media screen and (min-width:#{$minWidth}px){
+    $cntrWidth: nth($screen, 4);
+    @media screen and (min-width:#{$minWidth}px){    	
+		.cntr{
+			width:#{$cntrWidth}px;
+		}
         @include screenStyles($screen);  
     }
 }
