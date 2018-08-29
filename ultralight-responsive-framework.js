@@ -1,4 +1,3 @@
-alert("hello");
 /**
  * Shows Menu
  */
