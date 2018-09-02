@@ -1831,6 +1831,26 @@ button,
 .links-dark a:hover, .links-dark a:focus {
   color: #1C2541; }
 
+/* Modals */
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+  background: #ffffffdd; }
+
+.modal-cntr {
+  width: 80%; }
+
+.modal.visible {
+  display: flex; }
+
 /* Margins */
 .m-0 {
   margin: 0px; }
