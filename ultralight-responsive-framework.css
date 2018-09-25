@@ -46,7 +46,7 @@ html, body {
 .cntr .cntr, .cntr .cntr-fluid, .cntr-fluid .cntr, .cntr-fluid .cntr-fluid {
   margin: 0; }
 
-.rw, .cl, button, .btn, .inpgrp, box {
+.rw, .cl, .inpgrp {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -68,6 +68,12 @@ html, body {
 .fulwid {
   width: 100%;
   max-width: 100%; }
+
+.flex {
+  display: flex; }
+
+.inflex {
+  display: inline-flex; }
 
 .fdrow {
   flex-direction: row; }
@@ -216,6 +222,7 @@ ul.menu.acdn ul {
 
 .s1 {
   flex: 0 0 8.33333%;
+  width: 8.33333%;
   max-width: 8.33333%; }
 
 .sord1 {
@@ -226,6 +233,7 @@ ul.menu.acdn ul {
 
 .s2 {
   flex: 0 0 16.66667%;
+  width: 16.66667%;
   max-width: 16.66667%; }
 
 .sord2 {
@@ -236,6 +244,7 @@ ul.menu.acdn ul {
 
 .s3 {
   flex: 0 0 25%;
+  width: 25%;
   max-width: 25%; }
 
 .sord3 {
@@ -246,6 +255,7 @@ ul.menu.acdn ul {
 
 .s4 {
   flex: 0 0 33.33333%;
+  width: 33.33333%;
   max-width: 33.33333%; }
 
 .sord4 {
@@ -256,6 +266,7 @@ ul.menu.acdn ul {
 
 .s5 {
   flex: 0 0 41.66667%;
+  width: 41.66667%;
   max-width: 41.66667%; }
 
 .sord5 {
@@ -266,6 +277,7 @@ ul.menu.acdn ul {
 
 .s6 {
   flex: 0 0 50%;
+  width: 50%;
   max-width: 50%; }
 
 .sord6 {
@@ -276,6 +288,7 @@ ul.menu.acdn ul {
 
 .s7 {
   flex: 0 0 58.33333%;
+  width: 58.33333%;
   max-width: 58.33333%; }
 
 .sord7 {
@@ -286,6 +299,7 @@ ul.menu.acdn ul {
 
 .s8 {
   flex: 0 0 66.66667%;
+  width: 66.66667%;
   max-width: 66.66667%; }
 
 .sord8 {
@@ -296,6 +310,7 @@ ul.menu.acdn ul {
 
 .s9 {
   flex: 0 0 75%;
+  width: 75%;
   max-width: 75%; }
 
 .sord9 {
@@ -306,6 +321,7 @@ ul.menu.acdn ul {
 
 .s10 {
   flex: 0 0 83.33333%;
+  width: 83.33333%;
   max-width: 83.33333%; }
 
 .sord10 {
@@ -316,6 +332,7 @@ ul.menu.acdn ul {
 
 .s11 {
   flex: 0 0 91.66667%;
+  width: 91.66667%;
   max-width: 91.66667%; }
 
 .sord11 {
@@ -326,10 +343,12 @@ ul.menu.acdn ul {
 
 .s12 {
   flex: 0 0 100%;
+  width: 100%;
   max-width: 100%; }
 
 .sauto {
-  flex: initial; }
+  flex: initial;
+  width: auto; }
 
 .sordfirst {
   order: -1; }
@@ -384,6 +403,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m1 {
     flex: 0 0 8.33333%;
+    width: 8.33333%;
     max-width: 8.33333%; }
 
   .mord1 {
@@ -394,6 +414,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m2 {
     flex: 0 0 16.66667%;
+    width: 16.66667%;
     max-width: 16.66667%; }
 
   .mord2 {
@@ -404,6 +425,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m3 {
     flex: 0 0 25%;
+    width: 25%;
     max-width: 25%; }
 
   .mord3 {
@@ -414,6 +436,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m4 {
     flex: 0 0 33.33333%;
+    width: 33.33333%;
     max-width: 33.33333%; }
 
   .mord4 {
@@ -424,6 +447,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m5 {
     flex: 0 0 41.66667%;
+    width: 41.66667%;
     max-width: 41.66667%; }
 
   .mord5 {
@@ -434,6 +458,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m6 {
     flex: 0 0 50%;
+    width: 50%;
     max-width: 50%; }
 
   .mord6 {
@@ -444,6 +469,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m7 {
     flex: 0 0 58.33333%;
+    width: 58.33333%;
     max-width: 58.33333%; }
 
   .mord7 {
@@ -454,6 +480,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m8 {
     flex: 0 0 66.66667%;
+    width: 66.66667%;
     max-width: 66.66667%; }
 
   .mord8 {
@@ -464,6 +491,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m9 {
     flex: 0 0 75%;
+    width: 75%;
     max-width: 75%; }
 
   .mord9 {
@@ -474,6 +502,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m10 {
     flex: 0 0 83.33333%;
+    width: 83.33333%;
     max-width: 83.33333%; }
 
   .mord10 {
@@ -484,6 +513,7 @@ ul.menu.shrtl.rht ul ul {
 
   .m11 {
     flex: 0 0 91.66667%;
+    width: 91.66667%;
     max-width: 91.66667%; }
 
   .mord11 {
@@ -494,10 +524,12 @@ ul.menu.shrtl.rht ul ul {
 
   .m12 {
     flex: 0 0 100%;
+    width: 100%;
     max-width: 100%; }
 
   .mauto {
-    flex: initial; }
+    flex: initial;
+    width: auto; }
 
   .mordfirst {
     order: -1; }
@@ -551,6 +583,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l1 {
     flex: 0 0 8.33333%;
+    width: 8.33333%;
     max-width: 8.33333%; }
 
   .lord1 {
@@ -561,6 +594,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l2 {
     flex: 0 0 16.66667%;
+    width: 16.66667%;
     max-width: 16.66667%; }
 
   .lord2 {
@@ -571,6 +605,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l3 {
     flex: 0 0 25%;
+    width: 25%;
     max-width: 25%; }
 
   .lord3 {
@@ -581,6 +616,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l4 {
     flex: 0 0 33.33333%;
+    width: 33.33333%;
     max-width: 33.33333%; }
 
   .lord4 {
@@ -591,6 +627,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l5 {
     flex: 0 0 41.66667%;
+    width: 41.66667%;
     max-width: 41.66667%; }
 
   .lord5 {
@@ -601,6 +638,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l6 {
     flex: 0 0 50%;
+    width: 50%;
     max-width: 50%; }
 
   .lord6 {
@@ -611,6 +649,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l7 {
     flex: 0 0 58.33333%;
+    width: 58.33333%;
     max-width: 58.33333%; }
 
   .lord7 {
@@ -621,6 +660,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l8 {
     flex: 0 0 66.66667%;
+    width: 66.66667%;
     max-width: 66.66667%; }
 
   .lord8 {
@@ -631,6 +671,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l9 {
     flex: 0 0 75%;
+    width: 75%;
     max-width: 75%; }
 
   .lord9 {
@@ -641,6 +682,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l10 {
     flex: 0 0 83.33333%;
+    width: 83.33333%;
     max-width: 83.33333%; }
 
   .lord10 {
@@ -651,6 +693,7 @@ ul.menu.shrtl.rht ul ul {
 
   .l11 {
     flex: 0 0 91.66667%;
+    width: 91.66667%;
     max-width: 91.66667%; }
 
   .lord11 {
@@ -661,10 +704,12 @@ ul.menu.shrtl.rht ul ul {
 
   .l12 {
     flex: 0 0 100%;
+    width: 100%;
     max-width: 100%; }
 
   .lauto {
-    flex: initial; }
+    flex: initial;
+    width: auto; }
 
   .lordfirst {
     order: -1; }
@@ -718,6 +763,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl1 {
     flex: 0 0 8.33333%;
+    width: 8.33333%;
     max-width: 8.33333%; }
 
   .xlord1 {
@@ -728,6 +774,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl2 {
     flex: 0 0 16.66667%;
+    width: 16.66667%;
     max-width: 16.66667%; }
 
   .xlord2 {
@@ -738,6 +785,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl3 {
     flex: 0 0 25%;
+    width: 25%;
     max-width: 25%; }
 
   .xlord3 {
@@ -748,6 +796,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl4 {
     flex: 0 0 33.33333%;
+    width: 33.33333%;
     max-width: 33.33333%; }
 
   .xlord4 {
@@ -758,6 +807,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl5 {
     flex: 0 0 41.66667%;
+    width: 41.66667%;
     max-width: 41.66667%; }
 
   .xlord5 {
@@ -768,6 +818,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl6 {
     flex: 0 0 50%;
+    width: 50%;
     max-width: 50%; }
 
   .xlord6 {
@@ -778,6 +829,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl7 {
     flex: 0 0 58.33333%;
+    width: 58.33333%;
     max-width: 58.33333%; }
 
   .xlord7 {
@@ -788,6 +840,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl8 {
     flex: 0 0 66.66667%;
+    width: 66.66667%;
     max-width: 66.66667%; }
 
   .xlord8 {
@@ -798,6 +851,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl9 {
     flex: 0 0 75%;
+    width: 75%;
     max-width: 75%; }
 
   .xlord9 {
@@ -808,6 +862,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl10 {
     flex: 0 0 83.33333%;
+    width: 83.33333%;
     max-width: 83.33333%; }
 
   .xlord10 {
@@ -818,6 +873,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xl11 {
     flex: 0 0 91.66667%;
+    width: 91.66667%;
     max-width: 91.66667%; }
 
   .xlord11 {
@@ -828,10 +884,12 @@ ul.menu.shrtl.rht ul ul {
 
   .xl12 {
     flex: 0 0 100%;
+    width: 100%;
     max-width: 100%; }
 
   .xlauto {
-    flex: initial; }
+    flex: initial;
+    width: auto; }
 
   .xlordfirst {
     order: -1; }
@@ -885,6 +943,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl1 {
     flex: 0 0 8.33333%;
+    width: 8.33333%;
     max-width: 8.33333%; }
 
   .xxlord1 {
@@ -895,6 +954,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl2 {
     flex: 0 0 16.66667%;
+    width: 16.66667%;
     max-width: 16.66667%; }
 
   .xxlord2 {
@@ -905,6 +965,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl3 {
     flex: 0 0 25%;
+    width: 25%;
     max-width: 25%; }
 
   .xxlord3 {
@@ -915,6 +976,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl4 {
     flex: 0 0 33.33333%;
+    width: 33.33333%;
     max-width: 33.33333%; }
 
   .xxlord4 {
@@ -925,6 +987,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl5 {
     flex: 0 0 41.66667%;
+    width: 41.66667%;
     max-width: 41.66667%; }
 
   .xxlord5 {
@@ -935,6 +998,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl6 {
     flex: 0 0 50%;
+    width: 50%;
     max-width: 50%; }
 
   .xxlord6 {
@@ -945,6 +1009,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl7 {
     flex: 0 0 58.33333%;
+    width: 58.33333%;
     max-width: 58.33333%; }
 
   .xxlord7 {
@@ -955,6 +1020,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl8 {
     flex: 0 0 66.66667%;
+    width: 66.66667%;
     max-width: 66.66667%; }
 
   .xxlord8 {
@@ -965,6 +1031,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl9 {
     flex: 0 0 75%;
+    width: 75%;
     max-width: 75%; }
 
   .xxlord9 {
@@ -975,6 +1042,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl10 {
     flex: 0 0 83.33333%;
+    width: 83.33333%;
     max-width: 83.33333%; }
 
   .xxlord10 {
@@ -985,6 +1053,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl11 {
     flex: 0 0 91.66667%;
+    width: 91.66667%;
     max-width: 91.66667%; }
 
   .xxlord11 {
@@ -995,10 +1064,12 @@ ul.menu.shrtl.rht ul ul {
 
   .xxl12 {
     flex: 0 0 100%;
+    width: 100%;
     max-width: 100%; }
 
   .xxlauto {
-    flex: initial; }
+    flex: initial;
+    width: auto; }
 
   .xxlordfirst {
     order: -1; }
@@ -1052,6 +1123,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl1 {
     flex: 0 0 8.33333%;
+    width: 8.33333%;
     max-width: 8.33333%; }
 
   .xxxlord1 {
@@ -1062,6 +1134,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl2 {
     flex: 0 0 16.66667%;
+    width: 16.66667%;
     max-width: 16.66667%; }
 
   .xxxlord2 {
@@ -1072,6 +1145,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl3 {
     flex: 0 0 25%;
+    width: 25%;
     max-width: 25%; }
 
   .xxxlord3 {
@@ -1082,6 +1156,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl4 {
     flex: 0 0 33.33333%;
+    width: 33.33333%;
     max-width: 33.33333%; }
 
   .xxxlord4 {
@@ -1092,6 +1167,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl5 {
     flex: 0 0 41.66667%;
+    width: 41.66667%;
     max-width: 41.66667%; }
 
   .xxxlord5 {
@@ -1102,6 +1178,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl6 {
     flex: 0 0 50%;
+    width: 50%;
     max-width: 50%; }
 
   .xxxlord6 {
@@ -1112,6 +1189,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl7 {
     flex: 0 0 58.33333%;
+    width: 58.33333%;
     max-width: 58.33333%; }
 
   .xxxlord7 {
@@ -1122,6 +1200,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl8 {
     flex: 0 0 66.66667%;
+    width: 66.66667%;
     max-width: 66.66667%; }
 
   .xxxlord8 {
@@ -1132,6 +1211,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl9 {
     flex: 0 0 75%;
+    width: 75%;
     max-width: 75%; }
 
   .xxxlord9 {
@@ -1142,6 +1222,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl10 {
     flex: 0 0 83.33333%;
+    width: 83.33333%;
     max-width: 83.33333%; }
 
   .xxxlord10 {
@@ -1152,6 +1233,7 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl11 {
     flex: 0 0 91.66667%;
+    width: 91.66667%;
     max-width: 91.66667%; }
 
   .xxxlord11 {
@@ -1162,10 +1244,12 @@ ul.menu.shrtl.rht ul ul {
 
   .xxxl12 {
     flex: 0 0 100%;
+    width: 100%;
     max-width: 100%; }
 
   .xxxlauto {
-    flex: initial; }
+    flex: initial;
+    width: auto; }
 
   .xxxlordfirst {
     order: -1; }
@@ -1319,6 +1403,14 @@ figure {
   margin-top: 0rem;
   margin-bottom: .5rem; }
 
+/* `Weights
+----------------------------------------------------------------------------------------------------*/
+.txtnrm {
+  font-weight: normal; }
+
+.txtbld {
+  font-weight: bold; }
+
 /* `Alignments
 ----------------------------------------------------------------------------------------------------*/
 .txtlht {
@@ -1378,6 +1470,7 @@ input::placeholder {
 
 button, button:visited,
 .btn, .btn:visited {
+  display: inline-block;
   padding: 0.5em 1.5em;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -1832,24 +1925,36 @@ button,
   color: #1C2541; }
 
 /* Modals */
-.modal {
+.overlay {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 1000;
-  background: #ffffffdd; }
+  z-index: 999;
+  background-color: #ccc;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s, opacity 0.5s ease-out; }
 
-.modal-cntr {
-  width: 80%; }
+.overlay.visible {
+  visibility: visible;
+  opacity: 0.8; }
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, 0%);
+  min-width: 150px;
+  z-index: 1000;
+  visibility: hidden;
+  transition: visibility 0.5s, top 0.5s ease-out, translate 0.5s ease-out; }
 
 .modal.visible {
-  display: flex; }
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%); }
 
 /* Margins */
 .m-0 {
