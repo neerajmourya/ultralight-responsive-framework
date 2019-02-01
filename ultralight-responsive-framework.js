@@ -64,7 +64,7 @@ function ulnMenu(li, i) {
         anc.addEventListener("click", function (e) {
             e.preventDefault();
             ulnMenuToggle(li);
-        });
+        }, false);
     }
 }
 
@@ -84,8 +84,7 @@ function ulnToggle(el, i) {
             var tglEl = document.getElementById(tgls[i]);
             ulnElementToggle(tglEl);
         }
-
-    });
+    }, false);
 }
 
 /**
@@ -101,3 +100,19 @@ function ulnElementToggle(el) {
         }
     }
 }
+
+/**
+ * Hide all menu elements on click on document
+ */
+window.onload = function () {
+    var els = document.querySelectorAll('ul.menu ul');
+    document.onclick = function (e) {
+        for (var i = 0; i < els.length; i++) {
+            var trlink = els[i].parentElement.querySelector('a');
+            if (e.target !== els[i] && e.target !== trlink) {
+                els[i].parentElement.classList.remove("dropped");
+                els[i].parentElement.classList.remove("ovfvis");
+            }
+        }
+    };
+};
